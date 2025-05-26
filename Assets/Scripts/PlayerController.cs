@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 7;
     public float jumpForce = 300;
     public Rigidbody2D rb;
+    public ground_collizion groundChecker;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && groundChecker.isGrounded)
         {
             //rb.AddForce(new Vector2(0,jumpForce));
             rb.AddForce(Vector2.up * jumpForce);
